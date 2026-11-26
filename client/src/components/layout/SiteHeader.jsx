@@ -1,13 +1,13 @@
-import { Menu, Phone } from 'lucide-react';
+import { Menu, Moon, Phone, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { SITE_CONFIG } from '../../config/siteConfig';
 
-function BrandMark() {
+function BrandMark({ isLight }) {
   return (
     <svg width="26" height="26" viewBox="0 0 48 48" fill="none" aria-hidden="true" style={{ display: 'block', flexShrink: 0 }}>
-      <path d="M5 29.5 24 9l19 20.5" stroke="#CBB9FF" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M12 28.5v11h24v-11" stroke="#F8FAFC" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M20 39.5V27h8v12.5" stroke="#D9FF00" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M5 29.5 24 9l19 20.5" stroke={isLight ? '#5B43B8' : '#CBB9FF'} strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 28.5v11h24v-11" stroke={isLight ? '#0B1021' : '#F8FAFC'} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M20 39.5V27h8v12.5" stroke={isLight ? '#6B56B8' : '#D2F24D'} strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -22,8 +22,9 @@ const LINKS = [
   ['admin', 'Admin'],
 ];
 
-export default function SiteHeader({ currentView, onNavigate, onOpenMenu }) {
+export default function SiteHeader({ currentView, onNavigate, onOpenMenu, theme = 'dark', onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
+  const isLight = theme === 'light';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 36);
@@ -38,11 +39,11 @@ export default function SiteHeader({ currentView, onNavigate, onOpenMenu }) {
         position: 'sticky',
         top: 0,
         zIndex: 'var(--z-nav)',
-        backgroundColor: scrolled ? 'rgba(11, 16, 33, 0.9)' : '#0B1021',
+        backgroundColor: scrolled ? 'var(--nav-bg)' : 'var(--nav-bg-solid)',
         backdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(18px) saturate(160%)' : 'none',
-        borderBottom: '1px solid rgba(203, 185, 255, 0.16)',
-        transition: 'background-color 220ms ease',
+        borderBottom: '1px solid var(--nav-border)',
+        transition: 'background-color 220ms ease, border-color 220ms ease',
       }}
     >
       <div
@@ -60,8 +61,8 @@ export default function SiteHeader({ currentView, onNavigate, onOpenMenu }) {
           onClick={() => onNavigate('home')}
           className="ar-plain-link"
           style={{
-            background: 'rgba(203, 185, 255, 0.08)',
-            border: '1px solid rgba(203, 185, 255, 0.22)',
+            background: 'var(--pill-bg)',
+            border: '1px solid var(--nav-border)',
             borderRadius: '999px',
             padding: '0.38rem 0.95rem',
             display: 'inline-flex',
@@ -70,12 +71,12 @@ export default function SiteHeader({ currentView, onNavigate, onOpenMenu }) {
             fontWeight: 800,
             fontSize: '0.98rem',
             letterSpacing: '-0.02em',
-            color: '#F8FAFC',
+            color: 'var(--text-primary)',
             whiteSpace: 'nowrap',
             flexShrink: 0,
           }}
         >
-          <BrandMark />
+          <BrandMark isLight={isLight} />
           <span>{SITE_CONFIG.brandName}</span>
         </button>
 
@@ -88,13 +89,13 @@ export default function SiteHeader({ currentView, onNavigate, onOpenMenu }) {
                 type="button"
                 onClick={() => onNavigate(id)}
                 style={{
-                  background: active ? 'rgba(203, 185, 255, 0.14)' : 'transparent',
+                  background: active ? 'var(--pill-bg)' : 'transparent',
                   border: 'none',
                   borderRadius: '999px',
                   padding: '0.35rem 0.75rem',
                   fontSize: '0.9rem',
-                  fontWeight: active ? 700 : 500,
-                  color: active ? 'var(--volt)' : '#F8FAFC',
+                  fontWeight: active ? 700 : 600,
+                  color: active ? (isLight ? '#5B43B8' : 'var(--volt)') : 'var(--text-primary)',
                   whiteSpace: 'nowrap',
                 }}
               >
@@ -104,21 +105,41 @@ export default function SiteHeader({ currentView, onNavigate, onOpenMenu }) {
           })}
         </nav>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexShrink: 0 }}>
           <a
             href={SITE_CONFIG.phoneHref}
             className="ar-plain-link ar-desktop-nav"
             style={{
               gap: '0.35rem',
-              fontSize: '0.9rem',
+              fontSize: '0.88rem',
               fontWeight: 600,
-              color: 'var(--lavender-soft)',
+              color: 'var(--text-muted)',
               whiteSpace: 'nowrap',
             }}
           >
             <Phone size={14} />
             <span>{SITE_CONFIG.phone}</span>
           </a>
+
+          <button
+            type="button"
+            onClick={onToggleTheme}
+            aria-label={isLight ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+            title={isLight ? 'Switch to Nocturne Dark Mode' : 'Switch to Light Mode'}
+            style={{
+              width: 38,
+              height: 38,
+              borderRadius: '50%',
+              border: '1px solid var(--nav-border)',
+              background: 'var(--pill-bg)',
+              color: 'var(--text-primary)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            {isLight ? <Moon size={16} /> : <Sun size={16} />}
+          </button>
 
           <button
             type="button"

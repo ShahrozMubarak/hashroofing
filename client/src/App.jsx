@@ -104,6 +104,26 @@ function AppShell() {
   const [currentView, setCurrentView] = useState(() => viewFromPath(window.location.pathname));
   const [selectedService, setSelectedService] = useState('Roof replacement');
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    try {
+      return localStorage.getItem('auren_theme') === 'light' ? 'light' : 'dark';
+    } catch {
+      return 'dark';
+    }
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    const metaTheme = document.head.querySelector('meta[name="theme-color"]');
+    if (metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#F5F2FF' : '#0B1021');
+    try {
+      localStorage.setItem('auren_theme', theme);
+    } catch {}
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
+  }, []);
 
   useEffect(() => {
     const onPopState = () => {
@@ -168,8 +188,8 @@ function AppShell() {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--bg-page)' }}>
-      <SiteHeader currentView={currentView} onNavigate={navigateTo} onOpenMenu={() => setMobileOpen(true)} />
-      <MobileDrawer isOpen={mobileOpen} onClose={() => setMobileOpen(false)} onNavigate={navigateTo} />
+      <SiteHeader currentView={currentView} onNavigate={navigateTo} onOpenMenu={() => setMobileOpen(true)} theme={theme} onToggleTheme={toggleTheme} />
+      <MobileDrawer isOpen={mobileOpen} onClose={() => setMobileOpen(false)} onNavigate={navigateTo} theme={theme} onToggleTheme={toggleTheme} />
       <main style={{ flex: 1 }}>
         <PageFade viewKey={currentView}>
           {currentView === 'home' && <HomePage onNavigate={navigateTo} onSelectService={handleSelectService} />}

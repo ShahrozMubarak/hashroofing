@@ -299,19 +299,19 @@ export default function HomePage({ onNavigate, onSelectService }) {
             }
           />
 
-          <div className="ar-col-4 ar-hover-card ar-chamfer-card ar-crystal-card">
+          <div className="ar-col-4 ar-hover-card ar-chamfer-card ar-crystal-card" style={{ color: 'var(--text-on-nocturne)' }}>
             <div style={{ display: 'grid', gap: '0.95rem' }}>
-              <span style={{ color: 'var(--lavender-base)', fontWeight: 800, fontSize: '0.9rem' }}>
+              <span style={{ color: 'var(--tag-on-nocturne)', fontWeight: 800, fontSize: '0.9rem' }}>
                 Homeowner Vault
               </span>
               <h3>Live 8-stage project portal &amp; PDF warranties.</h3>
-              <p style={{ color: 'var(--text-muted)' }}>
+              <p style={{ color: 'var(--muted-on-nocturne)' }}>
                 Track tear-off logs, approve change orders online, and verify transferable certificates anytime.
               </p>
               <div style={{ display: 'grid', gap: '0.5rem', marginTop: '0.25rem' }}>
                 {['Live weather & sheathing notes', 'Downloadable engineered quotes', 'SHA-verified warranty IDs'].map((item) => (
-                  <span key={item} style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--lavender-soft)', display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Check size={14} color="#CBB9FF" /> {item}
+                  <span key={item} style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-on-nocturne)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <Check size={14} color="currentColor" /> {item}
                   </span>
                 ))}
               </div>
@@ -336,7 +336,7 @@ export default function HomePage({ onNavigate, onSelectService }) {
                   key={r._id}
                   className={idx === 1 ? 'ar-review-card-lifted ar-crystal-light' : 'ar-review-card-navy ar-crystal-card'}
                 >
-                  <strong style={{ color: idx === 1 ? '#0B1021' : 'var(--lavender-base)' }}>{'★'.repeat(r.rating)}</strong>
+                  <strong style={{ color: idx === 1 ? '#0B1021' : 'var(--tag-on-nocturne)' }}>{'★'.repeat(r.rating)}</strong>
                   <p style={{ lineHeight: 1.65 }}>{r.comment}</p>
                   <strong style={{ fontSize: '0.95rem' }}>{r.homeownerName} · {r.city}</strong>
                 </div>

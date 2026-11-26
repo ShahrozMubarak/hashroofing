@@ -3,18 +3,28 @@ import { motion, useReducedMotion } from 'framer-motion';
 const SURFACE_STYLES = {
   nocturne: {
     bg: 'var(--surface-nocturne-glass)',
-    color: '#F8FAFC',
-    border: '1px solid rgba(255, 255, 255, 0.2)',
-    shadow: 'var(--crystal-shadow-dark)',
-    dark: true,
+    color: 'var(--text-on-nocturne)',
+    mutedColor: 'var(--muted-on-nocturne)',
+    tagColor: 'var(--tag-on-nocturne)',
+    border: '1px solid var(--border-navy)',
+    shadow: 'var(--shadow-navy)',
+    mediaBorder: '1px solid var(--border-navy)',
+    orbBg: 'var(--icon-orb-bg)',
+    orbColor: 'var(--icon-orb-color)',
+    chipBg: 'var(--pill-bg)',
     crystalClass: 'ar-crystal-card',
   },
   lavender: {
     bg: 'var(--surface-lavender-haze)',
     color: '#0B1021',
+    mutedColor: '#1E2747',
+    tagColor: '#0B1021',
     border: '1px solid rgba(255, 255, 255, 0.85)',
     shadow: 'var(--crystal-shadow-light)',
-    dark: false,
+    mediaBorder: '1px solid rgba(11, 16, 33, 0.14)',
+    orbBg: '#0B1021',
+    orbColor: '#EBE4FF',
+    chipBg: 'rgba(11, 16, 33, 0.08)',
     crystalClass: 'ar-crystal-light',
   },
 };
@@ -64,7 +74,7 @@ export function ArchitecturalBentoCard({
       initial={prefersReduced ? false : { opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.12 }}
-      transition={{ duration: 0.6, delay, ease: [0.2, 0.8, 0.2, 1] }}
+      transition={{ duration: 0.55, delay, ease: [0.2, 0.8, 0.2, 1] }}
       className={`ar-hover-card ${s.crystalClass} ${isHorizontal ? 'ar-split-asym' : ''} ${className}`}
       style={{
         position: 'relative',
@@ -90,7 +100,7 @@ export function ArchitecturalBentoCard({
             borderRadius: 'var(--radius-tile)',
             overflow: 'hidden',
             aspectRatio: variant === 'tall' ? '16 / 10' : '16 / 9',
-            border: s.dark ? '1px solid rgba(255,255,255,0.22)' : '1px solid rgba(11,16,33,0.14)',
+            border: s.mediaBorder,
           }}
         >
           {mediaNode}
@@ -99,13 +109,7 @@ export function ArchitecturalBentoCard({
 
       <div style={{ display: 'grid', gap: '0.85rem', alignContent: 'start' }}>
         {tag && (
-          <span
-            style={{
-              fontSize: '0.9375rem',
-              fontWeight: 700,
-              color: s.dark ? 'var(--lavender-base)' : '#0B1021',
-            }}
-          >
+          <span style={{ fontSize: '0.9375rem', fontWeight: 700, color: s.tagColor }}>
             {tag}
           </span>
         )}
@@ -113,7 +117,7 @@ export function ArchitecturalBentoCard({
           {headline}
         </h3>
         {body && (
-          <p style={{ color: s.dark ? 'var(--text-muted)' : '#0B1021', lineHeight: 1.65 }}>
+          <p style={{ color: s.mutedColor, lineHeight: 1.65 }}>
             {body}
           </p>
         )}
@@ -126,7 +130,7 @@ export function ArchitecturalBentoCard({
             borderRadius: 'var(--radius-tile)',
             overflow: 'hidden',
             aspectRatio: '16 / 10',
-            border: s.dark ? '1px solid rgba(255,255,255,0.22)' : '1px solid rgba(11,16,33,0.14)',
+            border: s.mediaBorder,
           }}
         >
           {mediaNode}
@@ -136,7 +140,6 @@ export function ArchitecturalBentoCard({
   );
 }
 
-/** Cathedral / Gable Arch-Cropped Liquid Crystal Card */
 export function ArchFramedCard({
   tone = 'lavender',
   badge,
@@ -158,7 +161,7 @@ export function ArchFramedCard({
       initial={prefersReduced ? false : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.12 }}
-      transition={{ duration: 0.6, delay, ease: [0.2, 0.8, 0.2, 1] }}
+      transition={{ duration: 0.55, delay, ease: [0.2, 0.8, 0.2, 1] }}
       className={`ar-hover-card ar-arch-card ${s.crystalClass} ${className}`}
       style={{
         position: 'relative',
@@ -188,7 +191,7 @@ export function ArchFramedCard({
             borderRadius: '999px',
             background: 'rgba(11, 16, 33, 0.88)',
             backdropFilter: 'blur(10px)',
-            color: 'var(--lavender-soft)',
+            color: '#EBE4FF',
             border: '1px solid rgba(203, 185, 255, 0.4)',
             fontSize: '0.82rem',
             fontWeight: 800,
@@ -201,9 +204,7 @@ export function ArchFramedCard({
       {imageSrc && (
         <div
           className="ar-arch-aperture"
-          style={{
-            border: s.dark ? '2px solid rgba(255,255,255,0.28)' : '2px solid rgba(255,255,255,0.88)',
-          }}
+          style={{ border: '2px solid rgba(255,255,255,0.88)' }}
         >
           <img
             src={imageSrc}
@@ -217,12 +218,12 @@ export function ArchFramedCard({
 
       <div style={{ display: 'grid', gap: '0.7rem' }}>
         {tag && (
-          <span style={{ fontSize: '0.9rem', fontWeight: 700, color: s.dark ? 'var(--lavender-base)' : '#0B1021' }}>
+          <span style={{ fontSize: '0.9rem', fontWeight: 700, color: s.tagColor }}>
             {tag}
           </span>
         )}
         <h3 style={{ fontSize: 'clamp(1.45rem, 2.4vw, 1.95rem)', lineHeight: 1.08 }}>{headline}</h3>
-        {body && <p style={{ color: s.dark ? 'var(--text-muted)' : '#0B1021', lineHeight: 1.6 }}>{body}</p>}
+        {body && <p style={{ color: s.mutedColor, lineHeight: 1.6 }}>{body}</p>}
       </div>
 
       {metrics.length > 0 && (
@@ -233,7 +234,7 @@ export function ArchFramedCard({
               style={{
                 padding: '0.35rem 0.78rem',
                 borderRadius: '999px',
-                background: s.dark ? 'rgba(203,185,255,0.16)' : 'rgba(11,16,33,0.09)',
+                background: s.chipBg,
                 fontSize: '0.84rem',
                 fontWeight: 700,
               }}
@@ -249,7 +250,6 @@ export function ArchFramedCard({
   );
 }
 
-/** Multi-Layer Liquid Crystal Spec Card for Spacious Grid Showcase */
 export function CrystalSpecCard({
   tone = 'nocturne',
   icon,
@@ -296,9 +296,9 @@ export function CrystalSpecCard({
               borderRadius: '14px',
               display: 'grid',
               placeItems: 'center',
-              background: s.dark ? 'rgba(203, 185, 255, 0.16)' : 'rgba(11, 16, 33, 0.9)',
-              border: s.dark ? '1px solid rgba(255, 255, 255, 0.26)' : '1px solid rgba(255,255,255,0.2)',
-              color: s.dark ? 'var(--lavender-soft)' : 'var(--lavender-base)',
+              background: s.orbBg,
+              border: s.border,
+              color: s.orbColor,
             }}
           >
             {icon}
@@ -311,8 +311,8 @@ export function CrystalSpecCard({
                 letterSpacing: '0.04em',
                 padding: '0.32rem 0.78rem',
                 borderRadius: '999px',
-                background: s.dark ? 'rgba(255,255,255,0.1)' : 'rgba(11,16,33,0.08)',
-                border: s.dark ? '1px solid rgba(255,255,255,0.18)' : '1px solid rgba(11,16,33,0.12)',
+                background: s.chipBg,
+                border: s.border,
               }}
             >
               {code}
@@ -321,14 +321,14 @@ export function CrystalSpecCard({
         </div>
 
         <h3 style={{ fontSize: '1.45rem', lineHeight: 1.15 }}>{title}</h3>
-        <p style={{ color: s.dark ? 'var(--text-muted)' : '#0B1021', lineHeight: 1.6 }}>{summary}</p>
+        <p style={{ color: s.mutedColor, lineHeight: 1.6 }}>{summary}</p>
 
         {specs.length > 0 && (
-          <div style={{ display: 'grid', gap: '0.55rem', paddingTop: '0.5rem', borderTop: s.dark ? '1px solid rgba(255,255,255,0.14)' : '1px solid rgba(11,16,33,0.12)' }}>
+          <div style={{ display: 'grid', gap: '0.55rem', paddingTop: '0.5rem', borderTop: `1px solid ${s.chipBg}` }}>
             {specs.map(([k, v]) => (
               <div key={k} style={{ display: 'flex', justifyContent: 'space-between', gap: '0.75rem', fontSize: '0.9rem' }}>
-                <span style={{ color: s.dark ? 'var(--text-muted)' : 'rgba(11,16,33,0.72)' }}>{k}</span>
-                <strong style={{ color: s.dark ? 'var(--lavender-soft)' : '#0B1021' }}>{v}</strong>
+                <span style={{ color: s.mutedColor }}>{k}</span>
+                <strong style={{ color: s.color }}>{v}</strong>
               </div>
             ))}
           </div>
@@ -340,17 +340,16 @@ export function CrystalSpecCard({
   );
 }
 
-/** Floating Frosted Liquid Crystal Telemetry Strip Card */
 export function FloatingTelemetryStripCard({ eyebrow, title, stats = [], actions }) {
   return (
     <div className="ar-telemetry-strip ar-crystal-card">
       <div style={{ display: 'grid', gap: '0.45rem', maxWidth: 420 }}>
         {eyebrow && (
-          <span style={{ color: 'var(--lavender-base)', fontWeight: 800, fontSize: '0.88rem', letterSpacing: '0.03em' }}>
+          <span style={{ color: 'var(--tag-on-nocturne)', fontWeight: 800, fontSize: '0.88rem', letterSpacing: '0.03em' }}>
             {eyebrow}
           </span>
         )}
-        <strong style={{ fontSize: 'clamp(1.25rem, 2.2vw, 1.6rem)', lineHeight: 1.18 }}>{title}</strong>
+        <strong style={{ fontSize: 'clamp(1.25rem, 2.2vw, 1.6rem)', lineHeight: 1.18, color: 'var(--text-on-nocturne)' }}>{title}</strong>
       </div>
 
       <div className="ar-telemetry-metrics">
@@ -408,7 +407,7 @@ export function LavenderStagePanel({
                 height: 44,
                 borderRadius: '14px',
                 backgroundColor: '#0B1021',
-                color: 'var(--lavender-soft)',
+                color: '#EBE4FF',
                 display: 'grid',
                 placeItems: 'center',
                 flexShrink: 0,

@@ -14,7 +14,7 @@ const ITEMS = [
   ['admin', 'Operations Console'],
 ];
 
-export default function MobileDrawer({ isOpen, onClose, onNavigate }) {
+export default function MobileDrawer({ isOpen, onClose, onNavigate, theme = 'dark', onToggleTheme }) {
   useEffect(() => {
     if (!isOpen) return undefined;
     const prev = document.body.style.overflow;
@@ -98,17 +98,27 @@ export default function MobileDrawer({ isOpen, onClose, onNavigate }) {
             ))}
           </nav>
 
-          <button
-            type="button"
-            className="btn-primary"
-            style={{ width: '100%' }}
-            onClick={() => {
-              onNavigate('estimate');
-              onClose();
-            }}
-          >
-            Estimate Roof
-          </button>
+          <div style={{ display: 'grid', gap: '0.65rem' }}>
+            <button
+              type="button"
+              className="btn-crystal"
+              style={{ width: '100%' }}
+              onClick={onToggleTheme}
+            >
+              {theme === 'light' ? 'Switch to Nocturne Dark Mode' : 'Switch to Porcelain Light Mode'}
+            </button>
+            <button
+              type="button"
+              className="btn-primary"
+              style={{ width: '100%' }}
+              onClick={() => {
+                onNavigate('estimate');
+                onClose();
+              }}
+            >
+              Estimate Roof
+            </button>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

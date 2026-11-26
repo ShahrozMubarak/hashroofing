@@ -30,14 +30,14 @@ export default function ArchitecturalHero({ onNavigate, onAnchor }) {
     if (transitionTimeoutRef.current) clearTimeout(transitionTimeoutRef.current);
     transitionTimeoutRef.current = setTimeout(() => {
       setIsTransitioning(false);
-    }, 1750);
+    }, 620);
   };
 
   useEffect(() => {
     if (isPaused) return undefined;
     const interval = setInterval(() => {
       triggerTransition(!isAfter);
-    }, 5200);
+    }, 3400);
     return () => clearInterval(interval);
   }, [isAfter, isPaused]);
 
@@ -85,36 +85,33 @@ export default function ArchitecturalHero({ onNavigate, onAnchor }) {
           />
         </div>
 
-        {/* Moving Luminous Wipe Beam */}
+        {/* Fast Luminous Wipe Beam */}
         <div className="arch-transition-line" aria-hidden="true">
           <div className="transition-line-glow" />
           <div className="transition-line-beam" />
-          <span className="transition-line-tag">Envelope Filter</span>
         </div>
       </div>
 
-      {/* Soft Nocturne Atmospheric Gradient Leaving Generous Air Around House */}
+      {/* Soft Gradient Overlay Preserving House Clarity */}
       <div className="arch-hero-gradient-overlay" aria-hidden="true" />
       <div className="arch-hero-top-vignette" aria-hidden="true" />
 
-      {/* Interactive Filter State Toggle Pill */}
+      {/* Compact Fast Filter Toggle Pill */}
       <button
         type="button"
         className="arch-transition-pill"
         onClick={() => triggerTransition(!isAfter)}
-        title="Click to toggle between weathered damaged roof and completed Auren roof system"
+        title="Click to switch between broken weathered roof and finished roof filter"
       >
         <span className={`transition-pulse-dot ${isAfter ? 'is-after' : 'is-before'}`} />
-        <span className="transition-pill-title">
-          {isAfter ? 'New Architectural Roof Active' : 'Broken / Weathered Roof View'}
-        </span>
+        <span className="transition-pill-title">{isAfter ? 'New Roof' : 'Old Roof'}</span>
         <span className="transition-pill-switch">
-          <RefreshCw size={12} className="spin-slow" />
-          <span>Switch Filter</span>
+          <RefreshCw size={10} />
+          <span>Switch</span>
         </span>
       </button>
 
-      {/* Spacious Minimal Editorial Headline & Action Pills (No Small Text Clutter) */}
+      {/* Spacious Minimal Editorial Headline & Action Pills */}
       <div
         className="arch-hero-inner ar-container"
         style={{
@@ -124,7 +121,7 @@ export default function ArchitecturalHero({ onNavigate, onAnchor }) {
       >
         <div className="arch-hero-copy">
           <h1 className="arch-hero-headline arch-entrance-1">
-            Roofing under <span className="ar-kw-lavender">night-sky</span> precision.
+            Roofing under <span className="arch-hero-accent">night-sky</span> precision.
           </h1>
 
           <div className="arch-hero-actions arch-entrance-2">

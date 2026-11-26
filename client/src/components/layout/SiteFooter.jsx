@@ -13,7 +13,7 @@ export default function SiteFooter({ onNavigate }) {
         textAlign: 'left',
         fontSize: '0.9375rem',
         fontWeight: 500,
-        color: 'var(--lavender-soft)',
+        color: 'var(--footer-link)',
         textDecoration: 'underline',
         textUnderlineOffset: 3,
       }}
@@ -26,10 +26,11 @@ export default function SiteFooter({ onNavigate }) {
     <footer
       style={{
         background: 'var(--bg-footer)',
-        color: '#F8FAFC',
-        borderTop: '1px solid rgba(203, 185, 255, 0.2)',
+        color: 'var(--text-primary)',
+        borderTop: '1px solid var(--nav-border)',
         paddingBlock: '3.5rem 2.25rem',
         marginTop: '2.5rem',
+        transition: 'background-color 220ms ease, color 220ms ease',
       }}
     >
       <div className="ar-container" style={{ display: 'grid', gap: '2.25rem' }}>
@@ -41,11 +42,11 @@ export default function SiteFooter({ onNavigate }) {
           }}
         >
           <div style={{ display: 'grid', gap: '0.6rem', alignContent: 'start' }}>
-            <strong style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--volt)' }}>
+            <strong style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--footer-brand)' }}>
               {SITE_CONFIG.brandName}
             </strong>
             <p style={{ fontSize: '0.9375rem', color: 'var(--text-muted)' }}>{SITE_CONFIG.tagline}</p>
-            <p style={{ fontSize: '0.9rem', color: 'var(--lavender-base)' }}>{SITE_CONFIG.officeAddress}</p>
+            <p style={{ fontSize: '0.9rem', color: 'var(--tag-on-nocturne)' }}>{SITE_CONFIG.officeAddress}</p>
           </div>
 
           <div style={{ display: 'grid', gap: '0.5rem', alignContent: 'start' }}>
@@ -66,8 +67,8 @@ export default function SiteFooter({ onNavigate }) {
 
           <div
             style={{
-              background: 'rgba(203, 185, 255, 0.08)',
-              border: '1px solid rgba(203, 185, 255, 0.22)',
+              background: 'var(--pill-bg)',
+              border: '1px solid var(--nav-border)',
               borderRadius: '18px',
               padding: '1.15rem',
               display: 'grid',
@@ -75,9 +76,9 @@ export default function SiteFooter({ onNavigate }) {
               alignContent: 'start',
             }}
           >
-            <strong style={{ fontSize: '0.95rem', color: '#FFFFFF' }}>Direct Dispatch Desk</strong>
-            <a href={SITE_CONFIG.phoneHref}>{SITE_CONFIG.phone}</a>
-            <a href={SITE_CONFIG.emailHref}>{SITE_CONFIG.email}</a>
+            <strong style={{ fontSize: '0.95rem', color: 'var(--text-primary)' }}>Direct Dispatch Desk</strong>
+            <a href={SITE_CONFIG.phoneHref} style={{ color: 'var(--footer-link)' }}>{SITE_CONFIG.phone}</a>
+            <a href={SITE_CONFIG.emailHref} style={{ color: 'var(--footer-link)' }}>{SITE_CONFIG.email}</a>
             <button
               type="button"
               className="btn-primary"
@@ -91,7 +92,7 @@ export default function SiteFooter({ onNavigate }) {
 
         <div
           style={{
-            borderTop: '1px solid rgba(203, 185, 255, 0.14)',
+            borderTop: '1px solid var(--nav-border)',
             paddingTop: '1.25rem',
             display: 'flex',
             flexWrap: 'wrap',
@@ -102,7 +103,7 @@ export default function SiteFooter({ onNavigate }) {
           }}
         >
           <span>© {new Date().getFullYear()} {SITE_CONFIG.brandName}. {SITE_CONFIG.licenseDetails}</span>
-          <span>60% Nocturne Navy · 30% Lavender Haze · 10% Solar Volt</span>
+          <span>Nocturne Navy · Lavender Haze · Soft Architectural Volt</span>
         </div>
       </div>
     </footer>
