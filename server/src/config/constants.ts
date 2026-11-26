@@ -1,0 +1,72 @@
+export const ROLES = {
+  OWNER: 'OWNER',
+  ESTIMATOR: 'ESTIMATOR',
+  PROJECT_MANAGER: 'PROJECT_MANAGER',
+  HOMEOWNER: 'HOMEOWNER',
+} as const;
+
+export type Role = (typeof ROLES)[keyof typeof ROLES];
+
+export const STAFF_ROLES: Role[] = [ROLES.OWNER, ROLES.ESTIMATOR, ROLES.PROJECT_MANAGER];
+
+export const VALID_SERVICES = [
+  'Roof replacement',
+  'Roof installation',
+  'Roof repair',
+  'Roof inspections',
+] as const;
+
+export const LEAD_STAGES = [
+  'NEW',
+  'CONTACTED',
+  'INSPECTION_BOOKED',
+  'QUOTED',
+  'WON',
+  'ARCHIVED',
+] as const;
+
+export const PROJECT_STAGES = [
+  'ASSESSMENT',
+  'PROPOSAL_APPROVED',
+  'PERMIT_FILED',
+  'MATERIALS_ORDERED',
+  'TEAR_OFF',
+  'INSTALLATION',
+  'FINAL_WALKTHROUGH',
+  'WARRANTY_ACTIVE',
+] as const;
+
+export type ProjectStage = (typeof PROJECT_STAGES)[number];
+
+export const INSPECTION_STATUSES = [
+  'SCHEDULED',
+  'IN_PROGRESS',
+  'COMPLETED',
+  'RESCHEDULED',
+  'CANCELLED',
+] as const;
+
+export const STORM_SEVERITIES = [
+  'ACTIVE_LEAK',
+  'WIND_SHINGLE_LOSS',
+  'TREE_IMPACT',
+  'HAIL_BRUISING',
+] as const;
+
+export const REFRESH_COOKIE_NAME = 'auren_refresh_token';
+
+export const ERROR_CODES = {
+  VALIDATION_FAILED: 'VALIDATION_FAILED',
+  AUTH_UNAUTHORIZED: 'AUTH_UNAUTHORIZED',
+  AUTH_FORBIDDEN: 'AUTH_FORBIDDEN',
+  AUTH_INVALID_CREDENTIALS: 'AUTH_INVALID_CREDENTIALS',
+  AUTH_ACCOUNT_LOCKED: 'AUTH_ACCOUNT_LOCKED',
+  AUTH_TOKEN_INVALID: 'AUTH_TOKEN_INVALID',
+  AUTH_TOKEN_REUSED: 'AUTH_TOKEN_REUSED',
+  NOT_FOUND: 'NOT_FOUND',
+  CONFLICT: 'CONFLICT',
+  RATE_LIMITED: 'RATE_LIMITED',
+  SLOT_UNAVAILABLE: 'SLOT_UNAVAILABLE',
+  INTERNAL_ERROR: 'INTERNAL_ERROR',
+} as const;
+
