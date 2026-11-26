@@ -1,23 +1,43 @@
 :root {
-  /* 60% Dominant — Nocturne Navy Architectural Canvas */
+  /* 63% Dominant — Nocturne Navy Architectural Canvas */
   --bg-page: #0b1021;
   --bg-surface-navy: #111833;
-  --bg-card-navy: #161f42;
+  --bg-card-navy: rgba(18, 26, 54, 0.56);
   --bg-footer: #070b18;
 
-  /* 30% Secondary — Lavender Haze Liquid-Glass & Editorial Surfaces */
+  /* 30% Secondary — Lavender Haze Liquid-Crystal & Frosted Surfaces */
   --lavender-soft: #ebe4ff;
   --lavender-base: #cbb9ff;
   --lavender-mid: #a790f2;
   --lavender-deep: #6b56b8;
-  --surface-lavender-haze: radial-gradient(ellipse 90% 70% at 15% 15%, rgba(255, 255, 255, 0.94) 0%, transparent 56%), radial-gradient(ellipse 80% 75% at 88% 85%, rgba(167, 144, 242, 0.58) 0%, transparent 62%), linear-gradient(145deg, #f3efff 0%, #ded2ff 54%, #cbb9ff 100%);
-  --surface-nocturne-glass: radial-gradient(ellipse 80% 65% at 82% 18%, rgba(203, 185, 255, 0.22) 0%, transparent 58%), radial-gradient(ellipse 70% 75% at 14% 85%, rgba(217, 255, 0, 0.08) 0%, transparent 60%), linear-gradient(145deg, #172145 0%, #0f1630 58%, #0b1021 100%);
-  --surface-lavender-mist: radial-gradient(ellipse 85% 65% at 16% 18%, rgba(235, 228, 255, 0.92) 0%, transparent 60%), radial-gradient(ellipse 75% 75% at 86% 84%, rgba(167, 144, 242, 0.45) 0%, transparent 65%), linear-gradient(145deg, #f6f3ff 0%, #e5dcff 56%, #d4c4ff 100%);
+  --surface-lavender-haze:
+    radial-gradient(ellipse 90% 70% at 15% 15%, rgba(255, 255, 255, 0.88) 0%, transparent 56%),
+    radial-gradient(ellipse 80% 75% at 88% 85%, rgba(167, 144, 242, 0.44) 0%, transparent 62%),
+    linear-gradient(145deg, rgba(246, 243, 255, 0.88) 0%, rgba(226, 214, 255, 0.78) 54%, rgba(203, 185, 255, 0.72) 100%);
+  --surface-nocturne-glass:
+    radial-gradient(ellipse 85% 65% at 12% 8%, rgba(255, 255, 255, 0.14) 0%, transparent 52%),
+    radial-gradient(ellipse 80% 70% at 86% 88%, rgba(203, 185, 255, 0.18) 0%, transparent 58%),
+    linear-gradient(145deg, rgba(26, 36, 74, 0.62) 0%, rgba(15, 22, 48, 0.52) 55%, rgba(11, 16, 33, 0.66) 100%);
+  --surface-lavender-mist:
+    radial-gradient(ellipse 85% 65% at 16% 18%, rgba(255, 255, 255, 0.9) 0%, transparent 60%),
+    radial-gradient(ellipse 75% 75% at 86% 84%, rgba(167, 144, 242, 0.36) 0%, transparent 65%),
+    linear-gradient(145deg, rgba(248, 245, 255, 0.9) 0%, rgba(231, 222, 255, 0.82) 56%, rgba(214, 200, 255, 0.78) 100%);
 
-  /* 10% High-Voltage Accent — Solar Volt */
-  --volt: #d9ff00;
-  --volt-hover: #c5e800;
+  /* ~7% Restrained Accent — Softened Architectural Volt */
+  --volt: #d2f24d;
+  --volt-hover: #c0e038;
   --on-volt: #0b1021;
+
+  /* Liquid Crystal Specular Effects */
+  --crystal-blur: blur(26px) saturate(180%);
+  --crystal-shadow-dark:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(203, 185, 255, 0.14),
+    0 24px 56px rgba(4, 7, 18, 0.52);
+  --crystal-shadow-light:
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    inset 0 -1px 0 rgba(167, 144, 242, 0.28),
+    0 22px 48px rgba(72, 54, 140, 0.24);
 
   /* Typography Contrast */
   --text-primary: #f8fafc;
@@ -25,18 +45,18 @@
   --text-on-lavender: #0b1021;
 
   /* Borders & Hairlines */
-  --border-navy: rgba(203, 185, 255, 0.2);
-  --border-lavender: rgba(11, 16, 33, 0.16);
-  --nav-bg: rgba(11, 16, 33, 0.84);
-  --shadow-navy: 0 18px 42px rgba(4, 7, 18, 0.48);
-  --shadow-haze: 0 14px 34px rgba(107, 86, 184, 0.22);
+  --border-navy: rgba(255, 255, 255, 0.2);
+  --border-lavender: rgba(11, 16, 33, 0.15);
+  --nav-bg: rgba(11, 16, 33, 0.76);
+  --shadow-navy: var(--crystal-shadow-dark);
+  --shadow-haze: var(--crystal-shadow-light);
 
-  /* Typography & Radii */
+  /* Spacious Editorial Rhythm & Radii */
   --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', system-ui, sans-serif;
   --container-max: 1400px;
-  --section-py: clamp(2.5rem, 4.5vw, 4.25rem);
-  --radius-card: 28px;
-  --radius-tile: 20px;
+  --section-py: clamp(4.25rem, 7.5vw, 6.5rem);
+  --radius-card: 30px;
+  --radius-tile: 22px;
   --radius-pill: 9999px;
   --ease-apple: cubic-bezier(0.2, 0.8, 0.2, 1);
 
@@ -46,11 +66,10 @@
   --z-toast: 65;
 }
 
-/* Optional Light Read Mode inside Admin Console */
 [data-theme='light-admin'] {
   --bg-page: #f2ecff;
   --bg-surface-navy: #ffffff;
-  --bg-card-navy: #ffffff;
+  --bg-card-navy: rgba(255, 255, 255, 0.85);
   --text-primary: #0b1021;
   --text-muted: #3c4566;
   --border-navy: rgba(11, 16, 33, 0.16);

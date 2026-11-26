@@ -161,6 +161,14 @@ export default function AdminPage() {
               <button type="submit" className="btn-primary" style={{ width: '100%' }}>
                 Sign In to Operations Console
               </button>
+              <button
+                type="button"
+                className="btn-crystal"
+                style={{ width: '100%', background: 'rgba(11, 16, 33, 0.08)', color: '#0B1021', borderColor: 'rgba(11, 16, 33, 0.22)' }}
+                onClick={() => setLogin({ identifier: 'admin@aurenroofing.co', password: 'AurenOwner2026!' })}
+              >
+                Fill Demo Partner Credentials (admin@aurenroofing.co)
+              </button>
             </form>
           </LavenderStagePanel>
         </div>

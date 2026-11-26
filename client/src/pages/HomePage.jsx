@@ -1,4 +1,4 @@
-import { Check, Home, ShieldCheck } from 'lucide-react';
+import { Check, Home, Layers, ShieldCheck, Wind } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { apiFetch } from '../api/client';
 import { SERVICES } from '../config/siteConfig';
@@ -8,6 +8,7 @@ import PinnedRoofSpotlight from '../components/home/PinnedRoofSpotlight';
 import {
   ArchFramedCard,
   ArchitecturalBentoCard,
+  CrystalSpecCard,
   FloatingTelemetryStripCard,
   LavenderStagePanel,
 } from '../components/layout/Primitives';
@@ -73,15 +74,15 @@ export default function HomePage({ onNavigate, onSelectService }) {
 
   return (
     <div>
-      {/* 1. Whole-Viewport Responsive Hero with Broken-to-Finished Roof Wipe Filter */}
+      {/* 1. Spacious Whole-Viewport Hero with Broken-to-Finished Roof Wipe Filter */}
       <ArchitecturalHero onNavigate={onNavigate} onAnchor={scrollToSection} />
 
-      {/* 2. Floating Glass Territory Telemetry Strip Card */}
-      <section className="ar-section" style={{ paddingBottom: 0 }}>
+      {/* 2. Floating Liquid Crystal Telemetry Strip */}
+      <section className="ar-section" style={{ paddingBottom: 'clamp(1.25rem, 2.5vw, 2rem)' }}>
         <div className="ar-container">
           <FloatingTelemetryStripCard
-            eyebrow="LIVE PNW TELEMETRY · 5 TERRITORY HUBS"
-            title="Engineered proposals, instant drone slot booking & verified warranties."
+            eyebrow="PACIFIC NORTHWEST TERRITORY HUBS"
+            title="Engineered proposals, drone slot booking & verified warranties."
             stats={[
               ['140 mph', 'Wind Uplift Spec'],
               ['0–100', 'Roof Health Index'],
@@ -90,10 +91,10 @@ export default function HomePage({ onNavigate, onSelectService }) {
             ]}
             actions={
               <>
-                <button type="button" className="btn-primary" onClick={() => onNavigate('estimate')}>
+                <button type="button" className="btn-lavender" onClick={() => onNavigate('estimate')}>
                   Estimate Scope
                 </button>
-                <button type="button" className="btn-lavender" onClick={() => onNavigate('inspections')}>
+                <button type="button" className="btn-crystal" onClick={() => onNavigate('inspections')}>
                   Book Hub Slot
                 </button>
               </>
@@ -102,20 +103,19 @@ export default function HomePage({ onNavigate, onSelectService }) {
         </div>
       </section>
 
-      {/* 3. Multi-Style Asymmetric Bento + Cathedral Arch Cards */}
+      {/* 3. Multi-Style Liquid Crystal Bento + Cathedral Arch Cards */}
       <section id="disciplines" className="ar-section">
-        <div className="ar-container" style={{ display: 'grid', gap: '1.75rem' }}>
-          <RevealSection style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', alignItems: 'end' }}>
+        <div className="ar-container" style={{ display: 'grid', gap: 'clamp(2rem, 3.5vw, 3rem)' }}>
+          <RevealSection style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.25rem', alignItems: 'end' }}>
             <h2>
-              Four core <span className="ar-kw-volt">disciplines.</span>
+              Four core <span className="ar-kw-lavender">disciplines.</span>
             </h2>
             <p style={{ color: 'var(--text-muted)', maxWidth: '46ch' }}>
-              Distinct structural envelopes paired with arch-framed elevation profiles and real-time thermal diagnostics.
+              Liquid-crystal architectural panels matched to regional framing geometry and coastal exposure.
             </p>
           </RevealSection>
 
           <div className="ar-bento-12">
-            {/* 7-Col Featured Motion Video Bento Card */}
             <ArchitecturalBentoCard
               className="ar-col-7"
               tone="nocturne"
@@ -130,13 +130,12 @@ export default function HomePage({ onNavigate, onSelectService }) {
               videoSrc="/images/house-roof-loop.mp4"
               posterSrc="/images/hero-home.webp"
               cta={
-                <button type="button" className="btn-primary" onClick={() => onSelectService('Roof replacement')}>
+                <button type="button" className="btn-lavender" onClick={() => onSelectService('Roof replacement')}>
                   Scope Replacement
                 </button>
               }
             />
 
-            {/* 5-Col Cathedral Arch-Cropped Card */}
             <ArchFramedCard
               className="ar-col-5"
               tone="lavender"
@@ -154,10 +153,9 @@ export default function HomePage({ onNavigate, onSelectService }) {
               }
             />
 
-            {/* 4-Col Solar Volt Highlight Card */}
             <ArchitecturalBentoCard
               className="ar-col-4"
-              tone="volt"
+              tone="lavender"
               variant="compact"
               tag="03 · Urgent Remediation"
               headline="Precision roof repair & leak triage."
@@ -172,7 +170,6 @@ export default function HomePage({ onNavigate, onSelectService }) {
               delay={0.08}
             />
 
-            {/* 8-Col Horizontal Split Nocturne Card */}
             <ArchitecturalBentoCard
               className="ar-col-8"
               tone="nocturne"
@@ -187,7 +184,7 @@ export default function HomePage({ onNavigate, onSelectService }) {
               imageSrc="/images/roof-inspection.webp"
               imageAlt="Auren assessor evaluating roof condition"
               cta={
-                <button type="button" className="btn-lavender" onClick={() => onNavigate('inspections')}>
+                <button type="button" className="btn-crystal" onClick={() => onNavigate('inspections')}>
                   Reserve Time Slot
                 </button>
               }
@@ -200,7 +197,85 @@ export default function HomePage({ onNavigate, onSelectService }) {
       {/* 4. Sticky Telemetry Spotlight */}
       <PinnedRoofSpotlight onNavigate={onNavigate} />
 
-      {/* 5. Asymmetric 8:4 Material Lab + Chamfered Corner Vault Card */}
+      {/* 5. NEW Liquid Crystal Engineering Cards Section */}
+      <section className="ar-section">
+        <div className="ar-container" style={{ display: 'grid', gap: 'clamp(2rem, 3.5vw, 3rem)' }}>
+          <RevealSection style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.25rem', alignItems: 'end' }}>
+            <h2>
+              Assembly <span className="ar-kw-lavender">layers &amp; protection.</span>
+            </h2>
+            <p style={{ color: 'var(--text-muted)', maxWidth: '46ch' }}>
+              Every square foot is documented from bare sheathing inspection through transferable certificate issuance.
+            </p>
+          </RevealSection>
+
+          <div className="ar-bento-12">
+            <div className="ar-col-4">
+              <CrystalSpecCard
+                tone="nocturne"
+                icon={<Layers size={20} />}
+                code="SPEC · DECK-CDX"
+                title="Structural Sheathing & Moisture Shield"
+                summary="High-temp self-adhering ice & water valleys paired with breathable synthetic underlayment."
+                specs={[
+                  ['Valley Membrane', 'High-Temp Butyl'],
+                  ['Sheathing Audit', '100% Moisture Meter'],
+                  ['Fastener Pattern', '6-Nail Coastal'],
+                ]}
+                action={
+                  <button type="button" className="btn-crystal" style={{ width: '100%' }} onClick={() => onNavigate('estimate')}>
+                    Configure Scope
+                  </button>
+                }
+              />
+            </div>
+
+            <div className="ar-col-4">
+              <CrystalSpecCard
+                tone="lavender"
+                icon={<Wind size={20} />}
+                code="SPEC · SEAM-140"
+                title="Standing Seam & Ridge Airflow"
+                summary="24-gauge PVDF matte panels engineered to shed marine rain while balancing attic intake/exhaust."
+                specs={[
+                  ['Wind Uplift', '140 mph Rated'],
+                  ['Panel Finish', 'Kynar 500 PVDF'],
+                  ['Attic Exchange', 'Balanced Net Free Area'],
+                ]}
+                action={
+                  <button type="button" className="btn-secondary" style={{ width: '100%' }} onClick={() => onNavigate('projects')}>
+                    Compare Systems
+                  </button>
+                }
+                delay={0.08}
+              />
+            </div>
+
+            <div className="ar-col-4">
+              <CrystalSpecCard
+                tone="nocturne"
+                icon={<ShieldCheck size={20} />}
+                code="SPEC · VAULT-25"
+                title="Storm Triage & Transferable Vault"
+                summary="Real-time crew stage progress, homeowner change orders, and verified warranty PDFs."
+                specs={[
+                  ['Workmanship Term', '25 Years Covered'],
+                  ['Transferability', 'One-Time Home Sale'],
+                  ['Emergency Dispatch', '4–6 hr Corridor SLA'],
+                ]}
+                action={
+                  <button type="button" className="btn-crystal" style={{ width: '100%' }} onClick={() => onNavigate('portal')}>
+                    Verify Portal &amp; Warranty
+                  </button>
+                }
+                delay={0.14}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Asymmetric 8:4 Material Lab + Chamfered Crystal Vault Card */}
       <section className="ar-section">
         <div className="ar-container ar-bento-12">
           <ArchitecturalBentoCard
@@ -213,30 +288,30 @@ export default function HomePage({ onNavigate, onSelectService }) {
             imageSrc="/images/material-palette.webp"
             imageAlt="Curated roofing shingle and metal color swatches"
             cta={
-              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }}>
                 <button type="button" className="btn-secondary" onClick={() => onNavigate('estimate')}>
                   Compare Systems
                 </button>
-                <button type="button" className="btn-primary" onClick={() => onNavigate('projects')}>
+                <button type="button" className="btn-crystal" onClick={() => onNavigate('projects')} style={{ background: 'rgba(11,16,33,0.08)', color: '#0B1021', borderColor: 'rgba(11,16,33,0.2)' }}>
                   Before &amp; After Gallery
                 </button>
               </div>
             }
           />
 
-          <div className="ar-col-4 ar-hover-card ar-chamfer-card">
-            <div style={{ display: 'grid', gap: '0.85rem' }}>
-              <span style={{ color: 'var(--volt)', fontWeight: 800, fontSize: '0.9rem' }}>
+          <div className="ar-col-4 ar-hover-card ar-chamfer-card ar-crystal-card">
+            <div style={{ display: 'grid', gap: '0.95rem' }}>
+              <span style={{ color: 'var(--lavender-base)', fontWeight: 800, fontSize: '0.9rem' }}>
                 Homeowner Vault
               </span>
               <h3>Live 8-stage project portal &amp; PDF warranties.</h3>
               <p style={{ color: 'var(--text-muted)' }}>
                 Track tear-off logs, approve change orders online, and verify transferable certificates anytime.
               </p>
-              <div style={{ display: 'grid', gap: '0.45rem', marginTop: '0.25rem' }}>
+              <div style={{ display: 'grid', gap: '0.5rem', marginTop: '0.25rem' }}>
                 {['Live weather & sheathing notes', 'Downloadable engineered quotes', 'SHA-verified warranty IDs'].map((item) => (
                   <span key={item} style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--lavender-soft)', display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Check size={14} color="#D9FF00" /> {item}
+                    <Check size={14} color="#CBB9FF" /> {item}
                   </span>
                 ))}
               </div>
@@ -248,21 +323,21 @@ export default function HomePage({ onNavigate, onSelectService }) {
         </div>
       </section>
 
-      {/* 6. Homeowner Reviews Staggered Cards */}
+      {/* 7. Homeowner Reviews Spacious Crystal Cards */}
       {reviews.length > 0 && (
         <section className="ar-section">
-          <div className="ar-container" style={{ display: 'grid', gap: '1.75rem' }}>
+          <div className="ar-container" style={{ display: 'grid', gap: 'clamp(2rem, 3.5vw, 2.75rem)' }}>
             <h2>
               Homeowners on <span className="ar-kw-lavender">Auren.</span>
             </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '1.35rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: 'clamp(1.5rem, 2.8vw, 2.25rem)' }}>
               {reviews.slice(0, 3).map((r, idx) => (
                 <div
                   key={r._id}
-                  className={idx === 1 ? 'ar-review-card-lifted' : 'ar-review-card-navy'}
+                  className={idx === 1 ? 'ar-review-card-lifted ar-crystal-light' : 'ar-review-card-navy ar-crystal-card'}
                 >
-                  <strong style={{ color: idx === 1 ? '#0B1021' : 'var(--volt)' }}>{'★'.repeat(r.rating)}</strong>
-                  <p>{r.comment}</p>
+                  <strong style={{ color: idx === 1 ? '#0B1021' : 'var(--lavender-base)' }}>{'★'.repeat(r.rating)}</strong>
+                  <p style={{ lineHeight: 1.65 }}>{r.comment}</p>
                   <strong style={{ fontSize: '0.95rem' }}>{r.homeownerName} · {r.city}</strong>
                 </div>
               ))}
@@ -271,8 +346,8 @@ export default function HomePage({ onNavigate, onSelectService }) {
         </section>
       )}
 
-      {/* 7. Bottom Lavender Haze Consultation Panel */}
-      <section className="ar-section" style={{ paddingBottom: '4.5rem' }}>
+      {/* 8. Spacious Lavender Crystal Consultation Panel */}
+      <section className="ar-section" style={{ paddingBottom: 'clamp(4.5rem, 8vw, 7rem)' }}>
         <div className="ar-container">
           <LavenderStagePanel
             maxWidth={920}

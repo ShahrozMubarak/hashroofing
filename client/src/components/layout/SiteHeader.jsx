@@ -19,6 +19,7 @@ const LINKS = [
   ['portal', 'Portal'],
   ['about', 'About'],
   ['contact', 'Contact'],
+  ['admin', 'Admin'],
 ];
 
 export default function SiteHeader({ currentView, onNavigate, onOpenMenu }) {

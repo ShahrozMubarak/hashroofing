@@ -1,4 +1,4 @@
-import { ArrowUpRight, Compass, Hammer, RefreshCw, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowUpRight, RefreshCw } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 export default function ArchitecturalHero({ onNavigate, onAnchor }) {
@@ -85,7 +85,7 @@ export default function ArchitecturalHero({ onNavigate, onAnchor }) {
           />
         </div>
 
-        {/* Moving Luminous Solar Volt + Lavender Wipe Line */}
+        {/* Moving Luminous Wipe Beam */}
         <div className="arch-transition-line" aria-hidden="true">
           <div className="transition-line-glow" />
           <div className="transition-line-beam" />
@@ -93,7 +93,7 @@ export default function ArchitecturalHero({ onNavigate, onAnchor }) {
         </div>
       </div>
 
-      {/* Nocturne Navy & Lavender Atmospheric Gradient Overlays */}
+      {/* Soft Nocturne Atmospheric Gradient Leaving Generous Air Around House */}
       <div className="arch-hero-gradient-overlay" aria-hidden="true" />
       <div className="arch-hero-top-vignette" aria-hidden="true" />
 
@@ -114,7 +114,7 @@ export default function ArchitecturalHero({ onNavigate, onAnchor }) {
         </span>
       </button>
 
-      {/* Hero Editorial Foreground & 4-Pillar Strip */}
+      {/* Spacious Minimal Editorial Headline & Action Pills (No Small Text Clutter) */}
       <div
         className="arch-hero-inner ar-container"
         style={{
@@ -123,20 +123,14 @@ export default function ArchitecturalHero({ onNavigate, onAnchor }) {
         }}
       >
         <div className="arch-hero-copy">
-          <div className="arch-eyebrow-pill arch-entrance-1">
-            Seattle · Bellevue · Tacoma · Spokane · Portland
-          </div>
           <h1 className="arch-hero-headline arch-entrance-1">
-            Roofing under <span className="ar-kw-volt">night-sky</span> engineering.
+            Roofing under <span className="ar-kw-lavender">night-sky</span> precision.
           </h1>
-          <p className="arch-hero-supporting arch-entrance-2">
-            Standing seam steel, composite slate, and storm-rated envelopes engineered cleanly — watch weathered sheathing transform in real time.
-          </p>
 
-          <div className="arch-hero-actions arch-entrance-3">
+          <div className="arch-hero-actions arch-entrance-2">
             <button type="button" className="btn-primary arch-btn-hero" onClick={() => onNavigate('estimate')}>
-              <span>Launch Scope Calculator</span>
-              <ArrowUpRight size={17} strokeWidth={2.5} />
+              <span>Estimate Your Roof</span>
+              <ArrowUpRight size={17} strokeWidth={2.4} />
             </button>
 
             <button
@@ -147,44 +141,9 @@ export default function ArchitecturalHero({ onNavigate, onAnchor }) {
                 else onNavigate('projects');
               }}
             >
-              <span>Explore Our Systems</span>
+              <span>Explore Systems</span>
               <ArrowUpRight size={16} strokeWidth={2.2} />
             </button>
-          </div>
-        </div>
-
-        {/* Nocturne Glass 4-Pillar Strip */}
-        <div className="arch-pillars-strip arch-entrance-4">
-          <div className="arch-pillar-item">
-            <span className="arch-pillar-icon"><ShieldCheck size={16} strokeWidth={2.2} /></span>
-            <div>
-              <strong>140 mph Wind Rating</strong>
-              <p>Marine coastal &amp; foothill specs</p>
-            </div>
-          </div>
-
-          <div className="arch-pillar-item">
-            <span className="arch-pillar-icon"><Sparkles size={16} strokeWidth={2.2} /></span>
-            <div>
-              <strong>Considered Geometry</strong>
-              <p>Slate, metal &amp; Class-4 composites</p>
-            </div>
-          </div>
-
-          <div className="arch-pillar-item">
-            <span className="arch-pillar-icon"><Hammer size={16} strokeWidth={2.2} /></span>
-            <div>
-              <strong>4h Storm Dispatch</strong>
-              <p>Emergency tarping &amp; claim packets</p>
-            </div>
-          </div>
-
-          <div className="arch-pillar-item">
-            <span className="arch-pillar-icon"><Compass size={16} strokeWidth={2.2} /></span>
-            <div>
-              <strong>8-Stage Client Portal</strong>
-              <p>Live crew logs &amp; PDF warranties</p>
-            </div>
           </div>
         </div>
       </div>
